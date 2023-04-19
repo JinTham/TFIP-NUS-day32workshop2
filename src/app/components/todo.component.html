@@ -1,0 +1,33 @@
+<h2>ToDo</h2>
+
+<form [formGroup]="form" (ngSubmit)="processForm()">
+    <table>
+        <tr>
+            <td>Description: </td>
+            <td>
+                <input type="text" size=30 formControlName="description">
+                <span *ngIf="this.hasError('description')">Please enter at least 5 characters</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Priority: </td>
+            <td>
+                High<input type="radio" formControlName="priority" value="high" name="priority">
+                Med<input type="radio" formControlName="priority" value="med" name="priority">
+                Low<input type="radio" formControlName="priority" value="low" name="priority">
+            </td>
+        </tr>
+        <tr>
+            <td>Due: </td>
+            <td>
+                <input type="date" formControlName="dueDate">
+                <span *ngIf="this.hasError('dueDate')">Cannot enter past date</span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <!-- <td><button type="submit" [disabled]="isFormInvalid()">Add</button></td> -->
+            <td><ng-content></ng-content></td>
+        </tr>
+    </table>
+</form>

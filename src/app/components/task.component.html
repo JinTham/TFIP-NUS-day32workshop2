@@ -1,0 +1,29 @@
+<h2>Task</h2>
+
+<div *ngIf="taskList.length>0; else noTask">
+    <table border="1">
+        <!-- <thead>
+            <span>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Due</th>
+            </span>
+        </thead> -->
+        <tbody>
+            <tr *ngFor="let task of taskList; let i = index">
+                <span *ngIf="!task.done">
+                    <td>{{task.description}}</td>
+                    <td>{{task.priority}}</td>
+                    <td>{{task.dueDate}}</td>
+                    <td><button type="button" (click)="removeTask(i)">Fuck</button></td>
+                    <td><button type="button" (click)="editTask(i)">Edit</button></td>
+                    <td><button type="button" (click)="completeTask(i)">Done</button></td>
+                </span>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #noTask>
+    U have no active task!
+</ng-template>
